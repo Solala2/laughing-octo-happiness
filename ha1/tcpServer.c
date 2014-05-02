@@ -18,14 +18,16 @@ uint16_t gcd(uint16_t a, uint16_t b) {
 }
 
 int main(int argc, char** argv) {
+	struct sockaddr_in mine;
+	int sockfd;
+
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
 		return 1;
 	}
 
-	struct sockaddr_in mine;
 
-	int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
 	if (sockfd < 0)
 		fail("Couldn't create socket!");
@@ -41,12 +43,13 @@ int main(int argc, char** argv) {
 		fail("Couldn't listen");
 
 	while (1) {
-		int cfd = accept(sockfd, NULL, NULL);
+		int cfd;
+		uint8_t buffer[4];
+
+		cfd = accept(sockfd, NULL, NULL);
 
 		if (cfd < 0)
 			continue;
-
-		uint8_t buffer[4];
 
 		if (recv(cfd, buffer, 4, 0) == 4) {
 			uint16_t a, b;
