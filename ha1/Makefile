@@ -1,8 +1,10 @@
 CC = gcc
-CCFLAGS = 
+CCFLAGS =
 
 LD = gcc
 LDFLAGS = -lnsl -lresolv
+
+RM = rm -rf
 
 SRCS = $(shell find . -type f -iname "*.c")
 OBJS = $(SRCS:%.c=%.o)
@@ -13,6 +15,9 @@ all: $(OUTPUT)
 
 test: $(OUTPUT)
 	./$(OUTPUT)
+
+clean:
+	$(RM) $(OBJS) $(OUTPUT)
 
 %.o: %.c
 	$(CC) -c $(CCFLAGS) -o$@ $<
