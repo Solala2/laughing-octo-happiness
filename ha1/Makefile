@@ -1,2 +1,2 @@
 %: %.c
-	gcc -o$@ $<
+	gcc -Wall -Wpedantic -O0 -fmessage-length=0 -o$@ $<
