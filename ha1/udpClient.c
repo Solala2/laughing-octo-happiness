@@ -85,17 +85,17 @@ int main(int argc, char* argv[]) {
 	TO BE DONE: Bind
 	******************************************************************* */
 
-	memset(&my_addr, 0, sizeof(my_addr));
-	my_addr.sin_family = AF_INET;
+	/*memset(&my_addr, 0, sizeof(my_addr));
+	//my_addr.sin_family = AF_INET;
 
-	if (bind(sockfd, (struct sockaddr*) &my_addr, sizeof(my_addr)) != 0) {
-		fprintf(stderr, "Failed to bind\n");
-		return 1;
-	}
+	//if (bind(sockfd, (struct sockaddr*) &my_addr, sizeof(my_addr)) != 0) {
+	//	fprintf(stderr, "Failed to bind\n");
+	//	return 1;
+	}*/
 
 	/* ******************************************************************
 	TO BE DONE:  Send data
-	******************************************************************* */
+i	******************************************************************* */
 
 	packData(buffer, a, b);
 
